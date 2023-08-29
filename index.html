@@ -2,7 +2,6 @@
 <html>
   <head>
       <meta charset="utf-8">
-	  <link rel="icon" href="/favicon.ico">
     <title>免费TG直连代理</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -127,7 +126,7 @@
       </div>
     </div>
     <h1>TG直连代理采集器</h1>
-    <p style="line-height: 0.5; margin-bottom: 5px;">来源：TG频道采集，失效进群反馈  |  🌈更新频率：2h</p>
+    <p style="line-height: 0.5; margin-bottom: 5px;">来源：TG频道采集，失效进群反馈 |  🌈更新频率：8h</p>
     <table id="proxy-table">
       <tr>
         <th>#</th>
@@ -144,15 +143,14 @@
     <script>
       fetch('https://ghproxy.com/https://raw.githubusercontent.com/hero81/MTP/main/proxies.json').then((response) => response.json()).then((data) => {
         const table = document.getElementById('proxy-table');
-        data.forEach((proxy, index) => {
+        data.forEach((item, index) => {
           const row = table.insertRow();
           const countCell = row.insertCell();
           const nameCell = row.insertCell();
           const countryCell = row.insertCell();
           const linkCell = row.insertCell();
           countCell.innerText = index + 1;
-          const nameParts = proxy.query.name.split('|');
-          const channelUrl = nameParts[0].replace('@', '');
+          const nameParts = item.query.name.split('|');
           nameCell.innerHTML = `
 				
 				
@@ -161,7 +159,7 @@
           linkCell.innerHTML = `
 				
 				
-				<a href="${proxy.link}" class="link-preview">${proxy.link}</a>`;
+				<a href="${item.query.link}" class="link-preview">${item.query.link}</a>`;
         });
       }).catch((error) => console.error(error));
     </script>
